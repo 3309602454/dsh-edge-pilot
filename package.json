@@ -1,0 +1,55 @@
+{
+  "name": "dsh-edge-pilot",
+  "version": "0.2.0",
+  "description": "Drive the system Microsoft Edge from DeepSeek Harness: observe, click, type, scroll, screenshot, save-as, download, and replay saved skills.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": {
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "skills",
+    "cordis.patch.yml",
+    "SKILLS.md",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "edge",
+    "browser-automation",
+    "playwright",
+    "microsoft-edge"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3309602454/dsh-edge-pilot.git"
+  },
+  "homepage": "https://github.com/3309602454/dsh-edge-pilot#readme",
+  "bugs": {
+    "url": "https://github.com/3309602454/dsh-edge-pilot/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "playwright-core": "^1.64.1"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": "*"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "devDependencies": {
+    "yaml": "^2.9.1"
+  }
+}

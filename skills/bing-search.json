@@ -1,0 +1,17 @@
+{
+  "name": "bing-search",
+  "description": "在必应搜索一个词，返回前几条结果标题和链接",
+  "params": {
+    "query": { "required": true, "type": "string", "description": "搜索词" },
+    "limit": { "default": 5, "type": "number", "description": "最多返回几条" }
+  },
+  "steps": [
+    { "action": "goto", "url": "https://www.bing.com/" },
+    { "action": "wait", "css": "#sb_form_q", "timeoutMs": 20000 },
+    { "action": "type", "css": "#sb_form_q", "text": "{{query}}", "enter": true },
+    { "action": "wait", "urlContains": "search?q=", "timeoutMs": 20000 },
+    { "action": "wait", "css": "#b_results", "timeoutMs": 20000, "optional": true },
+    { "action": "sleep", "ms": 1200 },
+    { "action": "eval", "as": "results", "code": "(() => Array.from(document.querySelectorAll('#b_results .b_algo')).slice(0, {{limit}}).map(el => { const a = el.querySelector('h2 a'); return a ? { title: a.innerText.trim(), url: a.href } : null }).filter(Boolean))()" }
+  ]
+}

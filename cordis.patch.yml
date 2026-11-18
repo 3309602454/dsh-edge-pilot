@@ -1,0 +1,11 @@
+# dsh-edge-pilot bundle patch
+#
+# name 必须是包名，且插件要放在 <profile>/node_modules/dsh-edge-pilot/。
+# 写绝对路径不生效：宿主只在该位置注入 @deepseek-ai/dsh-tools 这个虚拟模块，
+# 换到别的目录会报 ERR_MODULE_NOT_FOUND。
+- insert:
+    - id: dsh-edge-pilot
+      name: 'dsh-edge-pilot'
+      config:
+        headless: false
+        maxElements: 200

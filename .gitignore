@@ -1,0 +1,11 @@
+# 依赖
+node_modules/
+
+# 运行时产物
+downloads/
+*.log
+loaded.json
+
+# 本地个人配置
+.env
+local.*
